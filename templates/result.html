@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang = "en">
+  <head>
+    <title>Your search result</title>
+  </head>
+  <body>
+    <h1>Here are the results for your search</h1>
+    <p><strong>You searched for: {{word}}</strong></p>
+    <ul>
+    
+    {% if results|length == 0 %}
+      <p>There are no results for your search.</p>
+      <p>Please try searching for something different.</p>
+    {% else %}
+      {% for result in results %}
+        <li>
+          <strong> <a href="{{ result['url'] }}" target="_blank">{{ result['title'] }}</a></strong><br> 
+          <p>...{{preview[loop.index0] | safe}}...</p>
+        </li>
+      {%endfor%}
+    {% endif %}
+    </ul>
+    <a href="{{ url_for('start')}}">Return</a> 
+  </body>
+</html>
+
