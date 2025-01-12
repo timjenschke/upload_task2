@@ -1,2 +1,2 @@
-from searchengine.py import app
+from searchengine import app
 application = app
