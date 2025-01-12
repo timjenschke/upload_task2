@@ -3,7 +3,12 @@ from flask import Flask, request, render_template
 from flask import send_from_directory
 from search import Search
 from bs4 import BeautifulSoup
+import traceback
 app = Flask(__name__) # Create a Flask web application instance
+
+@app.errorhandler(500)
+def internal_error(exception):
+   return "<pre>"+traceback.format_exc()+"</pre>"
 
 # Define the main page route, rendering the app.html template
 @app.route('/')
